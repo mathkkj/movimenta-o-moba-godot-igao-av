@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://kmhwue4ghreq"]
+
+[ext_resource type="Script" uid="uid://cjf2mw6tbk1r4" path="res://projetil.gd" id="1_f57he"]
+[ext_resource type="PackedScene" uid="uid://m7wieak2jxqk" path="res://uploads_files_3747132_bullett+bill.fbx" id="2_abe6a"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_37mxm"]
+radius = 0.19068909
+height = 0.38137817
+
+[node name="projetil" type="Area3D" unique_id=587105862]
+script = ExtResource("1_f57he")
+
+[node name="uploads_files_3747132_bullett+bill" parent="." unique_id=1961704033 instance=ExtResource("2_abe6a")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=208275482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05354309, 0)
+shape = SubResource("CapsuleShape3D_37mxm")

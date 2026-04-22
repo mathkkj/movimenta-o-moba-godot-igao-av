@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bcvvm20hl13f5"]
+
+[ext_resource type="Texture2D" uid="uid://dg6m8c1svptbs" path="res://6364349.png" id="1_lvuu3"]
+
+[node name="MARCADOR" type="Sprite3D" unique_id=1371750832 groups=["marcadores"]]
+transform = Transform3D(0.1494122, 0, 0, 0, 0.1494122, 0, 0, 0, 1, 0, 0.3242625, 0)
+texture = ExtResource("1_lvuu3")

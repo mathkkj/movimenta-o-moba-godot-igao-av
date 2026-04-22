@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dawvrdfa45hc7"]
+
+[ext_resource type="PackedScene" uid="uid://d2l8kk7gqo2sp" path="res://character_body_3d.tscn" id="1_jka67"]
+[ext_resource type="Texture2D" uid="uid://v51kwqxk5h2c" path="res://hq720.jpg" id="1_r3fl7"]
+[ext_resource type="Script" uid="uid://dvhnl0oqseee5" path="res://area_3d.gd" id="4_i5arm"]
+[ext_resource type="ArrayMesh" uid="uid://cb4notyo2u36v" path="res://uploads_files_2615314_Easter+Island+Head.obj" id="4_r3fl7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i5arm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wc5p8"]
+size = Vector3(0.9920044, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
+albedo_color = Color(0.41215247, 0.41215247, 0.41215247, 1)
+roughness_texture = ExtResource("1_r3fl7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5arm"]
+size = Vector3(2.0532837, 8.188721, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jka67"]
+
+[node name="Node3D" type="Node3D" unique_id=1993095313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.14295626)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=271562478 groups=["nao_tocavel"]]
+transform = Transform3D(28.26632, 0, 0, 0, 0.022849984, 0, 0, 0, 11.6957035, 0, 0, -2.8669305)
+physics_material_override = SubResource("PhysicsMaterial_i5arm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=898295817]
+transform = Transform3D(0.9999995, 0, 0, 0, 0.99998325, 0, 0, 0, 1.0000001, 0.0021668207, 0, 0)
+shape = SubResource("BoxShape3D_wc5p8")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D" unique_id=2089208244]
+transform = Transform3D(0.9999995, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CharacterBody3D" parent="." unique_id=186614554 instance=ExtResource("1_jka67")]
+
+[node name="camera" type="Camera3D" parent="." unique_id=1376523645]
+unique_name_in_owner = true
+transform = Transform3D(-0.99999744, 0, -0.002268821, 0, 1, 0, 0.002268821, 0, -0.99999744, -0.03330636, 3.0013814, -3.6037955)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="camera" unique_id=1921380511]
+transform = Transform3D(0.9998445, 0.00045127515, 0.017637443, -0.003950378, 0.98001856, 0.19886707, -0.017195271, -0.19890578, 0.97986794, -0.04716853, 15.6343155, 6.1097913)
+
+[node name="moai" type="Area3D" parent="." unique_id=1837861975 groups=["moai", "nao_tocavel"]]
+transform = Transform3D(-0.06375712, 0, -0.57222676, 0, 0.51855993, 0, 0.5870849, 0, -0.062143546, -11.691429, 0, -3.068933)
+script = ExtResource("4_i5arm")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="moai" unique_id=1067051337]
+transform = Transform3D(-0.9988874, 0, -0.047158778, 0, 1, 0, 0.047158778, 0, -0.9988874, 0, 0, 0.036875248)
+mesh = ExtResource("4_r3fl7")
+material = SubResource("StandardMaterial3D_jka67")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="moai" unique_id=338571209 groups=["nao_tocavel"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017425537, 2.1340942, 0)
+shape = SubResource("BoxShape3D_i5arm")
+
+[node name="obstaculo" type="StaticBody3D" parent="." unique_id=237506610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 11.955867, -6.841798, 0.54005194, -2.9517498)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="obstaculo" unique_id=1925937893]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="obstaculo" unique_id=192550655]
+shape = SubResource("BoxShape3D_jka67")
+
+[connection signal="body_entered" from="moai" to="moai" method="_on_body_entered"]
